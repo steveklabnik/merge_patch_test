@@ -1,0 +1,13 @@
+<h1>Try out <code>application/json-merge-patch</code></h1>
+
+<p>This site lets you try out the latest draft of <a href="http://tools.ietf.org/html/draft-snell-merge-patch-08">draft-snell-merge-patch</a></p>
+
+<p>The source code is <a href="https://github.com/steveklabnik/merge_patch_test">on GitHub</a>, and the Ruby gem powering the merge is the <a href="http://rubygems.org/gems/json-merge_patch">json-merge_patch</a> gem by <a href="http://steveklabnik.com">Steve Klabnik</a>.</p>
+
+<%= form_for :merge, url: merges_path, method: "GET" do |f| %>
+  <%= f.label :original %><br>
+  <%= f.text_area :original %><br>
+  <%= f.label :patch %><br>
+  <%= f.text_area :patch %><br>
+  <%= f.submit, "Merge" %>
+<% end %>
