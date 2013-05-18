@@ -11,3 +11,29 @@
   <%= f.text_area :patch %><br>
   <%= f.submit "Merge" %>
 <% end %>
+
+You can try from the command-line, too:
+
+<pre>
+<code>
+$ curl -i http://json-merge-patch.herokuapp.com/merges \
+  -X GET \
+  -H "Accept: application/json-merge-patch" \
+  -d merge[original]={%22foo%22%3A%22bar%22}\
+  -d merge[patch]={%22foo%22%3A%22baz%22}
+```
+</code>
+</pre>
+
+gives:
+
+<pre>
+<code>
+HTTP/1.1 200 OK
+Content-Type: application/json-merge-patch; charset=utf-8
+Date: Sat, 18 May 2013 22:19:42 GMT
+Content-Length: 13
+
+{"foo":"baz"}
+</code>
+</pre>
