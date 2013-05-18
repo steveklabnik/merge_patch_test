@@ -23,7 +23,7 @@ Or, if you want to try from the command-line:
 $ curl -i http://localhost:3000/merges \
   -X GET \
   -H "Accept: application/json-merge-patch" \
-  -d merge[original]={%22foo%22%3A%22bar%22}
+  -d merge[original]={%22foo%22%3A%22bar%22} \
   -d merge[patch]={%22foo%22%3A%22baz%22}
 ```
 
