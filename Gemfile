@@ -45,3 +45,4 @@ end
 # gem 'debugger', group: [:development, :test]
 
 gem 'json-merge_patch'
+gem 'json-patch'
