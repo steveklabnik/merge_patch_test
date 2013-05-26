@@ -45,6 +45,7 @@ GEM
       thor (>= 0.14, < 2.0)
     json (1.8.0)
     json-merge_patch (1.1.0)
+    json-patch (1.0.0)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -110,6 +111,7 @@ DEPENDENCIES
   coffee-rails (~> 4.0.0)
   jquery-rails
   json-merge_patch
+  json-patch
   pg
   rails (= 4.0.0.rc1)
   sass-rails (~> 4.0.0.rc1)

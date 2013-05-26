@@ -1,7 +1,11 @@
+<h1>JSON Draft and Standards Test</h1>
+<p>This site lets you try out:</p> 
+<ul>
+  <li>Latest draft of <a href="http://tools.ietf.org/html/draft-snell-merge-patch-08">draft-snell-merge-patch</a></li>
+  <li>RFC specs for <a href="http://tools.ietf.org/html/rfc6902">JSON Patch</a></li>
+</ul>
+
 <h1>Try out <code>application/json-merge-patch</code></h1>
-
-<p>This site lets you try out the latest draft of <a href="http://tools.ietf.org/html/draft-snell-merge-patch-08">draft-snell-merge-patch</a></p>
-
 <p>The source code is <a href="https://github.com/steveklabnik/merge_patch_test">on GitHub</a>, and the Ruby gem powering the merge is the <a href="http://rubygems.org/gems/json-merge_patch">json-merge_patch</a> gem by <a href="http://steveklabnik.com">Steve Klabnik</a>.</p>
 
 <%= form_for :merge, url: merges_path, method: "GET" do |f| %>
@@ -35,5 +39,42 @@ Date: Sat, 18 May 2013 22:19:42 GMT
 Content-Length: 13
 
 {"foo":"baz"}
+</code>
+</pre>
+
+<h1>Try out <code>application/json-patch+json</code></h1>
+<p>The source code is <a href="https://github.com/guillec/json-patch">on GitHub</a>, and the Ruby gem powering the patch is the <a href="http://rubygems.org/gems/json-patch">json-patch</a> gem by <a href="http://guillecarlos.com">Guille Carlos</a>.</p>
+
+<%= form_for :patch, url: patches_path, method: "GET" do |f| %>
+  <%= f.label :original %><br>
+  <%= f.text_area :original %><br>
+  <%= f.label :operations %><br>
+  <%= f.text_area :operations %><br>
+  <%= f.submit "Patch" %>
+<% end %>
+
+You can try from the command-line, too:
+
+<pre>
+<code>
+$ curl -i http://json-merge-patch.herokuapp.com/patches \
+  -X GET \
+  -H "Accept: application/json-patch+json" \
+  -d patch[original]={%22foo%22%3A%22bar%22}\
+  -d patch[operations]=%5B{%22op%22%3A%22add%22,%22path%22%3A%22%2Ffoo%22,%22value%22%3A%22one%22%7D%5D
+```
+</code>
+</pre>
+
+gives:
+
+<pre>
+<code>
+HTTP/1.1 200 OK
+Content-Type: application/json-patch+json; charset=utf-8
+Date: Sat, 18 May 2013 22:19:42 GMT
+Content-Length: 13
+
+{"foo":"one"}
 </code>
 </pre>
